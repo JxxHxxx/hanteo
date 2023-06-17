@@ -26,7 +26,7 @@ public class BoardController {
     }
 
     @GetMapping("/boards")
-    public ResponseEntity<List<BoardReadResponse>> readCond(@RequestBody BoardSearchCondition condition) {
+    public ResponseEntity<List<BoardReadResponse>> readCond(@ModelAttribute BoardSearchCondition condition) {
         List<BoardReadResponse> response = boardService.readCond(condition);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

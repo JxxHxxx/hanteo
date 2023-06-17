@@ -14,6 +14,7 @@ public class IdolGroup {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idol_group_idx")
     private Long id;
+    @Column(unique = true)
     private String name;
     private Integer groupGenderId;
 

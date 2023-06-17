@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.hanteo.ct.solution1.board.domain.BoardConst.*;
 import static com.hanteo.ct.solution1.board.domain.BoardConst.ANONYMOUS_BOARD_IDX;
 import static com.hanteo.ct.solution1.board.domain.BoardType.*;
 
