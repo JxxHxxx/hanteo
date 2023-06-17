@@ -5,6 +5,6 @@ import com.hanteo.ct.solution1.board.domain.BoardType;
 public record BoardCreatedEvent(
         Long idolGroupId,
         String boardName,
-        BoardType boardType
+        Long boardId
 ) {
 }

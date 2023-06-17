@@ -1,6 +1,7 @@
 package com.hanteo.ct.solution1.board.application;
 
 import com.hanteo.ct.solution1.board.domain.Board;
+import com.hanteo.ct.solution1.board.domain.BoardConst;
 import com.hanteo.ct.solution1.board.domain.BoardRepository;
 import com.hanteo.ct.solution1.board.domain.BoardType;
 import com.hanteo.ct.solution1.board.dto.request.BoardForm;
@@ -14,6 +15,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.hanteo.ct.solution1.board.domain.BoardConst.*;
+import static com.hanteo.ct.solution1.board.domain.BoardConst.ANONYMOUS_BOARD_IDX;
 import static com.hanteo.ct.solution1.board.domain.BoardType.*;
 
 
@@ -31,14 +34,14 @@ public class BoardService {
                     .type(form.boardType())
                     .build();
 
-            boardRepository.save(board);
+            Board savedBoard = boardRepository.save(board);
 
-            BoardCreatedEvent event = new BoardCreatedEvent(idolGroupId, form.name(), form.boardType());
+            BoardCreatedEvent event = new BoardCreatedEvent(idolGroupId, form.name(), savedBoard.getId());
             publisher.publishEvent(event);
         }
 
         if (ANONYMOUS.equals(form.boardType())) {
-            BoardCreatedEvent event = new BoardCreatedEvent(idolGroupId, form.boardType().description(), form.boardType());
+            BoardCreatedEvent event = new BoardCreatedEvent(idolGroupId, form.StringBoardType(), ANONYMOUS_BOARD_IDX);
             publisher.publishEvent(event);
         }
 

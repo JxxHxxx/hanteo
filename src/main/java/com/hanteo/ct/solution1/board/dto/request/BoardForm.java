@@ -6,4 +6,7 @@ public record BoardForm(
         String name,
         BoardType boardType
 ) {
+    public String StringBoardType() {
+        return this.boardType.description();
+    }
 }

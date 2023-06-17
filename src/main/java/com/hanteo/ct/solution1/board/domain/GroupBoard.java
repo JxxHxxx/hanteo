@@ -16,13 +16,12 @@ public class GroupBoard {
     private Long id;
     private Long idolGroupId;
     private String boardName;
-    @Enumerated(EnumType.STRING)
-    private BoardType boardType;
+    private Long boardId;
 
     @Builder
-    public GroupBoard(Long idolGroupId, String boardName, BoardType boardType) {
+    public GroupBoard(Long idolGroupId, String boardName, Long boardId) {
         this.idolGroupId = idolGroupId;
         this.boardName = boardName;
-        this.boardType = boardType;
+        this.boardId = boardId;
     }
 }

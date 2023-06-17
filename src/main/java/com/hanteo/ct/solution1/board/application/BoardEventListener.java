@@ -23,7 +23,7 @@ public class BoardEventListener {
         GroupBoard groupBoard = GroupBoard.builder()
                 .idolGroupId(event.idolGroupId())
                 .boardName(event.boardName())
-                .boardType(event.boardType())
+                .boardId(event.boardId())
                 .build();
 
         groupBoardRepository.save(groupBoard);
@@ -35,12 +35,12 @@ public class BoardEventListener {
                 .name(NOTICE.description())
                 .type(NOTICE)
                 .build();
-        boardRepository.save(board);
+        Board saveBoard = boardRepository.save(board);
 
         GroupBoard groupBoard = GroupBoard.builder()
                 .idolGroupId(event.idolGroupId())
                 .boardName(NOTICE.description())
-                .boardType(NOTICE)
+                .boardId(saveBoard.getId())
                 .build();
         groupBoardRepository.save(groupBoard);
     }
